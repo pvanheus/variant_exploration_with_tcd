@@ -21,3 +21,4 @@ for filename in sorted(listdir(input_directory)):
 
 sample_names = [ filename.split('.')[0] for filename in sorted(listdir(input_directory)) ]
 data = pd.DataFrame(matrix, index=sample_names, columns=locus_names)
+data.to_csv(output_filename)
