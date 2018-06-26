@@ -22,7 +22,7 @@ def make_variant_count_matrix_async(input_directory, output_filename, process_co
             future = loop.run_in_executor(p, process_vcf, path, gene_tree)
             futures.append(future)
     
-    for counts in yield from asyncio.gather(*futures)
+    for counts in (yield from asyncio.gather(*futures)):
             row = [ counts.get(locus, 0) for locus in locus_names ]
             matrix.append(row)        
 
